@@ -9,7 +9,8 @@ Enum format
 
 EnumConvGen accept C++11 scoped enum and C++98 enum. Scoped enum for C++98 enum can be emulated by declaring it inside structure or namespace.
 
-```cpp// C++11 scoped enum
+```cpp
+// C++11 scoped enum
 enum class Gender
 {
     Male='M', Female='F'
@@ -37,39 +38,47 @@ namespace Number
     {
         One=1, Two, Three
     };
-};```
+};
+```
 
 Enum type can be specified.
 
-```cpp// C++11 scoped enum
+```cpp
+// C++11 scoped enum
 enum class Gender : uint8
 {
     Male='M', Female='F'
-};```
+};
+```
 
 For C++98 enum, type can be indicated to parser by putting the type in comments
 
-```cpp// C++98 enum
+```cpp
+// C++98 enum
 enum Gender /* : uint8 */
 {
     Male='M', Female='F'
-};```
+};
+```
 
 Type must be single word without whitespace!
 
-```cpp// This is bad!
+```cpp
+// This is bad!
 enum class Gender : unsigned char
 {
     Male='M', Female='F'
-};```
+};
+```
 
 Enum value must not be an expression!
 
-```cppred='r', // ok
+```cpp
+red='r', // ok
 red=0xff0000, // ok
 red=1, // ok
-red=std::max(sizeof(type), sizeof(long)), // cannot be parsed```
-
+red=std::max(sizeof(type), sizeof(long)), // cannot be parsed
+```
 
 *Generate code*
 
@@ -82,7 +91,8 @@ namespace Number
     {
         One=1, Two, Three
     };
-};```
+};
+```
 
 6 functions are generated.
 
@@ -159,10 +169,13 @@ std::istream & operator>>(std::istream & is, Number::Value & val)
     is >> str;
     from_string(str, val);
     return is;
-}```
+}
+```
 
 *Note*
 
 EnumConvGen is a dumb parser: it cannot recognise comments or expression so put strictly enum code. It also does not check for syntax errors. However it can parse more than 1 enum at the same time. Don't like the generated code? Then fork it on Github and replace the output function with yours. Emscripten Makefile is provided, invoke it by specifying the file.
 
-```make -f MakefileEmscripten```
+```
+make -f MakefileEmscripten
+```
