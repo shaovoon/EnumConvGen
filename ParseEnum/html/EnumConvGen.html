@@ -1,0 +1,43 @@
+<html>
+<title>C++ Enum to String Converter Generator 1.0</title>
+
+<body>
+
+<script type="text/javascript" src="Scripts/EnumConvGen.js"></script>
+<script type="text/javascript" src="Scripts/jquery-1.10.2.js"></script>
+
+<h2>C++ Enum to String Converter Generator</h2>
+
+<h3>Input</h3>
+
+<textarea id="InputTextArea" rows="12" cols="80">enum Place
+{
+	Forest, Mountain
+};</textarea>
+
+<p>
+<input type="button" name="GenButton" value="Generate"/>
+</p>
+
+<h3>Output</h3>
+<textarea id="OutputTextArea" rows="50" cols="80">
+</textarea>
+
+<script>
+var gen_enum_conv_func;
+
+function btnClick()
+{
+	var input_str = document.getElementById("InputTextArea").value;
+	document.getElementById("OutputTextArea").value = gen_enum_conv_func(input_str);
+}
+
+$( document ).ready(function() {
+	gen_enum_conv_func = Module.cwrap('gen_enum_conv', 'string', ['string']);
+	$('[name="GenButton"]').click(btnClick);
+});
+</script>
+
+</body>
+
+</html>

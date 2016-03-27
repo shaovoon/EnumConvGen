@@ -1,0 +1,14 @@
+CC=emcc
+SOURCES:=~/EnumStrConv.cpp
+SOURCES+=~/ParseEnum.cpp
+LDFLAGS=-O2 --llvm-opts 2
+OUTPUT=~/EnumConvGen.html
+EMCC_DEBUG=1
+
+all: $(SOURCES) $(OUTPUT)
+
+$(OUTPUT): $(SOURCES) 
+	$(CC) $(SOURCES) --bind -s NO_EXIT_RUNTIME=1 -s EXPORTED_FUNCTIONS="['_main', '_gen_enum_conv']" -s ALLOW_MEMORY_GROWTH=1 -s DEMANGLE_SUPPORT=1 -s ASSERTIONS=1 -D__EMSCRIPTEN__ -std=c++11 $(LDFLAGS) -o $(OUTPUT)
+
+clean:
+	rm $(OUTPUT)
