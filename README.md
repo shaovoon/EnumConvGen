@@ -5,7 +5,7 @@ C++ Enum to String Converter Generator
 
 EnumConvGen is a Enum to String Converter Generator written in C++ transpiled to asm.js using Emscripten.
 
-Enum format
+## Enum format
 
 EnumConvGen accept C++11 scoped enum and C++98 enum. Scoped enum for C++98 enum can be emulated by declaring it inside structure or namespace.
 
