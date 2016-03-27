@@ -1,7 +1,7 @@
 # EnumConvGen
 C++ Enum to String Converter Generator
 
-*Introduction*
+## Introduction
 
 EnumConvGen is a Enum to String Converter Generator written in C++ transpiled to asm.js using Emscripten.
 
@@ -80,7 +80,7 @@ red=1, // ok
 red=std::max(sizeof(type), sizeof(long)), // cannot be parsed
 ```
 
-*Generate code*
+## Generate code
 
 Let's fire up the EnumConvGen.html to generate the converters based on the enum below.
 
@@ -172,7 +172,7 @@ std::istream & operator>>(std::istream & is, Number::Value & val)
 }
 ```
 
-*Note*
+## Note
 
 EnumConvGen is a dumb parser: it cannot recognise comments or expression so put strictly enum code. It also does not check for syntax errors. However it can parse more than 1 enum at the same time. Don't like the generated code? Then fork it on Github and replace the output function with yours. Emscripten Makefile is provided, invoke it by specifying the file.
 
