@@ -9,7 +9,7 @@ Enum format
 
 EnumConvGen accept C++11 scoped enum and C++98 enum. Scoped enum for C++98 enum can be emulated by declaring it inside structure or namespace.
 
-```// C++11 scoped enum
+```cpp// C++11 scoped enum
 enum class Gender
 {
     Male='M', Female='F'
@@ -41,7 +41,7 @@ namespace Number
 
 Enum type can be specified.
 
-```// C++11 scoped enum
+```cpp// C++11 scoped enum
 enum class Gender : uint8
 {
     Male='M', Female='F'
@@ -49,7 +49,7 @@ enum class Gender : uint8
 
 For C++98 enum, type can be indicated to parser by putting the type in comments
 
-```// C++98 enum
+```cpp// C++98 enum
 enum Gender /* : uint8 */
 {
     Male='M', Female='F'
@@ -57,14 +57,15 @@ enum Gender /* : uint8 */
 
 Type must be single word without whitespace!
 
-// This is bad!
+```cpp// This is bad!
 enum class Gender : unsigned char
 {
     Male='M', Female='F'
-};
+};```
+
 Enum value must not be an expression!
 
-```red='r', // ok
+```cppred='r', // ok
 red=0xff0000, // ok
 red=1, // ok
 red=std::max(sizeof(type), sizeof(long)), // cannot be parsed```
@@ -74,7 +75,8 @@ red=std::max(sizeof(type), sizeof(long)), // cannot be parsed```
 
 Let's fire up the EnumConvGen.html to generate the converters based on the enum below.
 
-```namespace Number
+```cpp
+namespace Number
 {
     enum Value
     {
@@ -84,7 +86,8 @@ Let's fire up the EnumConvGen.html to generate the converters based on the enum 
 
 6 functions are generated.
 
-```std::string to_string(Number::Value const & val);
+```cpp
+std::string to_string(Number::Value const & val);
 void from_string(std::string const & val, /* OUT */ Number::Value & out_val);
 int to_int(Number::Value const & val);
 void from_int(int const & val, /* OUT */ Number::Value & out_val);
