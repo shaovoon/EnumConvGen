@@ -6,7 +6,6 @@
 #include <sstream>
 
 std::string EnumStrConv::result;
-std::string EnumStrConv::error;
 
 bool EnumStrConv::is_whitespace(char c)
 {

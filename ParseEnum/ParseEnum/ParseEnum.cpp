@@ -17,10 +17,10 @@ extern "C" const char* gen_enum_conv(const char* cs)
 	std::ostringstream err_oss;
 	EnumStrConv::generate(str, oss, err_oss);
 
-	EnumStrConv::error = err_oss.str();
+	std::string error = err_oss.str();
 
-	if(!EnumStrConv::error.empty())
-		EnumStrConv::result = EnumStrConv::error;
+	if(!error.empty())
+		EnumStrConv::result = error;
 
 	return EnumStrConv::result.c_str();
 }

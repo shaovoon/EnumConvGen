@@ -20,6 +20,5 @@ struct EnumStrConv
 	   const std::vector<std::string>& enums, bool enum_class, bool cpp98_enum, bool enclosing, std::string int_type);
 
 	static std::string result;
-	static std::string error;
 };
 	
