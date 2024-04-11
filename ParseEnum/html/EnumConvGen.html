@@ -4,7 +4,6 @@
 <body>
 
 <script type="text/javascript" src="Scripts/EnumConvGen.js"></script>
-<script type="text/javascript" src="Scripts/jquery-1.10.2.js"></script>
 
 <h2>C++ Enum to String Converter Generator</h2>
 
@@ -16,7 +15,7 @@
 };</textarea>
 
 <p>
-<input type="button" name="GenButton" value="Generate"/>
+<input type="button" name="GenButton" value="Generate" onclick="btnClick();"/>
 </p>
 
 <h3>Output</h3>
@@ -32,9 +31,8 @@ function btnClick()
 	document.getElementById("OutputTextArea").value = gen_enum_conv_func(input_str);
 }
 
-$( document ).ready(function() {
+window.addEventListener('DOMContentLoaded',function () {
 	gen_enum_conv_func = Module.cwrap('gen_enum_conv', 'string', ['string']);
-	$('[name="GenButton"]').click(btnClick);
 });
 </script>
 
